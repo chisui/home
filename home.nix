@@ -22,6 +22,7 @@
       thunderbird
       htop
       killall
+      gopass
     ];
   };
   
