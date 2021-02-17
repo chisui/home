@@ -3,6 +3,7 @@
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.home-manager.path = "$HOME/projects/github/home-manager";
 
   programs.browserpass = {
     enable = true;
@@ -23,6 +24,10 @@
       htop
       killall
       gopass
+      (writeScriptBin "update" ''
+        #! /bin/sh
+        sudo nix-channel --update && sudo nixos-rebuild switch --upgrade && home-manager switch
+      '')
     ];
   };
   

@@ -1,3 +1,0 @@
-#! /bin/sh
-sudo nix-channel --update && sudo nixos-rebuild switch --upgrade && home-manager switch
-
