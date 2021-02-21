@@ -24,6 +24,7 @@
       htop
       killall
       gopass
+      vscodium
       (writeScriptBin "update" ''
         #! /bin/sh
         sudo nix-channel --update && sudo nixos-rebuild switch --upgrade && home-manager switch
@@ -33,7 +34,6 @@
   
   imports = [
     ./home/zsh.nix
-    ./home/vscode.nix
     ./home/git.nix
     ./home/i3.nix
     ./home/firefox.nix
