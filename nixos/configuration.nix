@@ -73,6 +73,10 @@
       ];
     };
   };
+
+  services.openvpn.servers = {
+    neuland.config = '' --config /root/nixos/openvpn/neuland.conf '';
+  };
  
   services.tlp.enable = true;
 

@@ -25,6 +25,7 @@
       killall
       gopass
       vscodium
+      jetbrains.idea-ultimate
       (writeScriptBin "update" ''
         #! /bin/sh
         sudo nix-channel --update && sudo nixos-rebuild switch --upgrade && home-manager switch
