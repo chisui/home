@@ -14,6 +14,8 @@
       ./users.nix
     ];
 
+  virtualisation.docker.enable = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -26,19 +28,9 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp58s0.useDHCP = true;
-  networking.interfaces.wwp0s20f0u6i12.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -115,10 +107,22 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall = {
-    allowedTCPPorts = [ ];
-    allowedUDPPorts = [ ];
+  networking = {
+    hostName = "T470s-pd";
+    wireless.enable = true;
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces = {
+      enp0s31f6.useDHCP = true;
+      wlp58s0.useDHCP = true;
+      wwp0s20f0u6i12.useDHCP = true;
+    };
+    firewall = {
+      allowedTCPPorts = [ 1194 1205 ];
+      allowedUDPPorts = [ 1194 1205 ];
+    };
   };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

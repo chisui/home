@@ -18,6 +18,9 @@
   home = {
     username = "chisui";
     homeDirectory = "/home/chisui";
+    sessionVariables = {
+      EDITOR = "vim";
+    };
     packages = with pkgs; [
       keepassxc
       thunderbird
@@ -26,9 +29,11 @@
       gopass
       vscodium
       jetbrains.idea-ultimate
+      enlightenment.terminology
+      powerline-fonts
       (writeScriptBin "update" ''
         #! /bin/sh
-        sudo nix-channel --update && sudo nixos-rebuild switch --upgrade && home-manager switch
+        sudo nixos-rebuild switch --upgrade && home-manager switch
       '')
     ];
   };
@@ -39,6 +44,7 @@
     ./home/i3.nix
     ./home/firefox.nix
     ./home/chromium.nix
+    ./home/direnv.nix
   ];
 
   # This value determines the Home Manager release that your
