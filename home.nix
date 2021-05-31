@@ -27,9 +27,10 @@
       killall
       gopass
       jetbrains.idea-ultimate
-      enlightenment.terminology
       vlc
       powerline-fonts
+      tree
+      file
       (writeScriptBin "update" ''
         #! /bin/sh
         sudo nixos-rebuild switch --upgrade && home-manager switch
@@ -55,6 +56,7 @@
     ./home/git.nix
     ./home/i3.nix
     ./home/firefox.nix
+    ./home/terminator.nix
     ./home/chromium.nix
     ./home/vscodium.nix
     ./home/direnv.nix
