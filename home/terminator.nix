@@ -11,7 +11,6 @@ in {
         title_font = ${font}
       [profiles]
         [[default]]
-          cursor_color = "#aaaaaa"
           use_system_font = False
           font = ${font}
           show_titlebar = False
