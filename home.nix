@@ -14,7 +14,7 @@ in {
     sessionVariables = {
       EDITOR = "vim";
     };
-    packages = packages;
+    inherit packages;
   };
   
   gtk.enable = true;
