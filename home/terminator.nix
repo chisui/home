@@ -1,25 +1,27 @@
 { config, pkgs, ... }:
 let
   font = "Droid Sans Mono for Powerline 10";
-  solarized_background_color = "#002b36";
-  solarized_palette = [
-    "#073642"
-    "#dc322f"
-    "#859900"
-    "#b58900"
-    "#268bd2"
-    "#d33682"
-    "#2aa198"
-    "#eee8d5"
-    solarized_background_color
-    "#cb4b16"
-    "#586e75"
-    "#657b83"
-    "#839496"
-    "#6c71c4"
-    "#93a1a1"
-    "#fdf6e3"
-  ];
+  solarized = rec {
+    background_color = "#002b36";
+    palette = [
+      "#073642"
+      "#dc322f"
+      "#859900"
+      "#b58900"
+      "#268bd2"
+      "#d33682"
+      "#2aa198"
+      "#eee8d5"
+      background_color
+      "#cb4b16"
+      "#586e75"
+      "#657b83"
+      "#839496"
+      "#6c71c4"
+      "#93a1a1"
+      "#fdf6e3"
+    ];
+  };
 in {
   home = {
     packages = [ pkgs.terminator ];
@@ -33,8 +35,8 @@ in {
           use_system_font = False
           font = ${font}
           show_titlebar = False
-          background_color = "#002b36"
-          palette = "${pkgs.lib.concatStringsSep ":" solarized_palette}"
+          background_color = "${solarized.background_color}"
+          palette = "${pkgs.lib.concatStringsSep ":" solarized.palette}"
     '';
   };
 }
