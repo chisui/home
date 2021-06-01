@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
-
-{
+with pkgs.lib;
+let
+  update = pkgs.writeScriptBin "update" ''
+    #! /bin/sh
+    sudo nixos-rebuild switch --upgrade && home-manager switch
+  '';
+  packages = map (p: pkgs."${p}") (splitString "\n" (readFile ./packages.lst));
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -20,22 +26,7 @@
     sessionVariables = {
       EDITOR = "vim";
     };
-    packages = with pkgs; [
-      keepassxc
-      thunderbird
-      htop
-      killall
-      gopass
-      jetbrains.idea-ultimate
-      vlc
-      powerline-fonts
-      tree
-      file
-      (writeScriptBin "update" ''
-        #! /bin/sh
-        sudo nixos-rebuild switch --upgrade && home-manager switch
-      '')
-    ];
+    packages = [update] ++ packages;
   };
   
   gtk.enable = true;
@@ -62,13 +53,5 @@
     ./home/direnv.nix
   ];
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "21.03";
+  home.stateVersion = "21.03"; # DON'T CHANGE
 }
