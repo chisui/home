@@ -2,7 +2,6 @@
 with pkgs.lib;
 let
   update = pkgs.writeScriptBin "update" ''
-    #! /bin/sh
     sudo nixos-rebuild switch --upgrade && home-manager switch
   '';
   packages = map (p: pkgs."${p}") (splitString "\n" (readFile ./packages.lst));
