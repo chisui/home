@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 with pkgs.lib;
 let
-  packages = map (p: pkgs."${p}") (splitString "\n" (readFile ./packages.lst));
+  packages = map (p: pkgs."${p}")
+    (filter (x: x != "")
+    (splitString "\n" (readFile ./packages.lst)));
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
