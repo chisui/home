@@ -27,6 +27,7 @@ in {
     xinput --set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" 1.0
   '';
   xresources.properties = {
+    "Xft.dpi" = 200;
     "Xcursor.size" = 64;
   };
 
