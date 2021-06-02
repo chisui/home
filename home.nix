@@ -17,9 +17,8 @@ in {
     inherit packages;
   };
   
-  gtk.enable = true;
-  gtk.gtk3.extraConfig = {
-    gtk-cursor-theme-size = 64;
+  gtk = {
+    enable = true;
   };
   xsession.enable = true;
   xsession.initExtra = ''
