@@ -7,7 +7,7 @@
       modifier = "Mod4"; # SuperKey
       keybindings = let
         volumeStep = "5";
-        brightnessStep = "5%";
+        brightnessStep = "2.5%";
         exec = cmd: "exec --no-startup-id ${cmd}";
         brightnessctl = op: exec "${pkgs.brightnessctl}/bin/brightnessctl set ${brightnessStep}${op}";
         in lib.mkOptionDefault {
