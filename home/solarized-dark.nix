@@ -1,4 +1,4 @@
-rec {
+{
   font = {
     family = "Droid Sans Mono for Powerline";
     size = 10;
@@ -20,24 +20,6 @@ rec {
     brightMagenta = "#6c71c4";
     brightCyan    = "#93a1a1";
     brightWhite   = "#fdf6e3";
-    palette = [
-      black
-      red
-      green
-      yellow
-      blue
-      magenta
-      cyan
-      white
-      brightBlack
-      brightRed
-      brightGreen
-      brightYellow
-      brightBlue
-      brightMagenta
-      brightCyan
-      brightWhite
-    ];
     background = brightBlack;
   };
 }
