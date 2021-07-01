@@ -23,18 +23,21 @@ let
     ];
   };
 in {
-  home.packages = [ pkgs.terminator ];
-  xdg.configFile."terminator/config".text = ''
-    [global_config]
-      borderless = True
-      title_use_system_font = False
-      title_font = ${font}
-    [profiles]
-      [[default]]
-        use_system_font = False
-        font = ${font}
-        show_titlebar = False
-        background_color = "${solarized.background_color}"
-        palette = "${pkgs.lib.concatStringsSep ":" solarized.palette}"
-  '';
+  programs.terminator = {
+    enable = true;
+    config = {
+      global_config = {
+        borderless = true;
+        title_use_system_font = false;
+        title_font = font;
+      };
+      profiles.default = {
+        use_system_font = false;
+        font = font;
+        show_titlebar = false;
+        background_color = solarized.background_color;
+        palette = "${pkgs.lib.concatStringsSep ":" solarized.palette}";
+      };
+    };
+  };
 }
