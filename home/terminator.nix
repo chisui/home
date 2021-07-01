@@ -1,27 +1,7 @@
 { config, pkgs, ... }:
 let
-  font = "Droid Sans Mono for Powerline 10";
-  solarized = rec {
-    background_color = "#002b36";
-    palette = [
-      "#073642"
-      "#dc322f"
-      "#859900"
-      "#b58900"
-      "#268bd2"
-      "#d33682"
-      "#2aa198"
-      "#eee8d5"
-      background_color
-      "#cb4b16"
-      "#586e75"
-      "#657b83"
-      "#839496"
-      "#6c71c4"
-      "#93a1a1"
-      "#fdf6e3"
-    ];
-  };
+  theme = import ./solarized-dark.nix;
+  font = "${theme.font.family} ${builtins.toString theme.font.size}";
 in {
   programs.terminator = {
     enable = true;
@@ -35,8 +15,8 @@ in {
         use_system_font = false;
         font = font;
         show_titlebar = false;
-        background_color = solarized.background_color;
-        palette = "${pkgs.lib.concatStringsSep ":" solarized.palette}";
+        background_color = theme.color.background;
+        palette = "${pkgs.lib.concatStringsSep ":" theme.color.palette}";
       };
     };
   };

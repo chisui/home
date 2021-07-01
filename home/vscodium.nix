@@ -12,6 +12,8 @@ let
       cp -r $src/* $out/share/vscode/extensions/pegjs-language
     '';
   };
+
+  console-theme = import ./solarized-dark.nix;
   
 in {
   programs.vscode = {
@@ -20,9 +22,29 @@ in {
     userSettings = {
       "rust-client.disableRustup" = true;
       "workbench.editor.untitled.hint" = "hidden";
-      "terminal.integrated.fontFamily" = "Droid Sans Mono for Powerline";
+      "terminal.integrated.fontFamily" = console-theme.font.family;
       "workbench.startupEditor" = "none";
       "workbench.editor.enablePreview" = false;
+      "workbench.colorCustomizations" = with console-theme.color; {
+        "terminal.background" = background;
+
+        "terminal.ansiBlack"   = black;
+        "terminal.ansiRed"     = red;
+        "terminal.ansiGreen"   = green;
+        "terminal.ansiYellow"  = yellow;
+        "terminal.ansiBlue"    = blue;
+        "terminal.ansiMagenta" = magenta;
+        "terminal.ansiCyan"    = cyan;
+        "terminal.ansiWhite"   = white;
+        "terminal.ansiBrightBlack"   = brightBlack;
+        "terminal.ansiBrightRed"     = brightRed;
+        "terminal.ansiBrightGreen"   = brightGreen;
+        "terminal.ansiBrightYellow"  = brightYellow;
+        "terminal.ansiBrightBlue"    = brightBlue;
+        "terminal.ansiBrightMagenta" = brightMagenta;
+        "terminal.ansiBrightCyan"    = brightCyan;
+        "terminal.ansiBrightWhite"   = brightWhite;
+      };
     };
     extensions = [
       ext-pegjs
