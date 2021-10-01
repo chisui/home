@@ -25,6 +25,8 @@ in {
       "terminal.integrated.fontFamily" = console-theme.font.family;
       "workbench.startupEditor" = "none";
       "workbench.editor.enablePreview" = false;
+      "workbench.commandPalette.history" = 0;
+      "task.quickOpen.history" = 0;
       "workbench.colorCustomizations" = with console-theme.color; {
         "terminal.background" = background;
 
