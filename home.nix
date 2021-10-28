@@ -34,6 +34,7 @@ in {
     ./home/zsh.nix
     ./home/git.nix
     ./home/i3.nix
+    ./home/intellij.nix
     ./home/firefox.nix
     ./home/terminator.nix
     ./home/chromium.nix
