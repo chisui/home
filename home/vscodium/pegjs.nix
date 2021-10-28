@@ -12,6 +12,6 @@ let
       cp -r $src/* $out/share/vscode/extensions/pegjs-language
     '';
   };
-in [
-  pegjs
-]
+in {
+  extensions = [ pegjs ];
+}

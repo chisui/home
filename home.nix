@@ -8,9 +8,9 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   
-  home = {
+  home = rec {
     username = "chisui";
-    homeDirectory = "/home/chisui";
+    homeDirectory = "/home/${username}";
     sessionVariables = {
       EDITOR = "vim";
     };
