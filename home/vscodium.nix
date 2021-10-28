@@ -21,6 +21,7 @@ in {
     package = pkgs.vscodium;
     userSettings = {
       "rust-client.disableRustup" = true;
+      "rust-analyzer.server.path" = "rust-analyzer";
       "workbench.editor.untitled.hint" = "hidden";
       "terminal.integrated.fontFamily" = console-theme.font.family;
       "workbench.startupEditor" = "none";
@@ -46,6 +47,16 @@ in {
         "terminal.ansiBrightMagenta" = brightMagenta;
         "terminal.ansiBrightCyan"    = brightCyan;
         "terminal.ansiBrightWhite"   = brightWhite;
+      };
+      "java.configuration.runtimes" = pkgs.lib.mapAttrsToList (n: v: {
+        name = "OpenJDK ${n}";
+        path = pkgs."jdk${builtins.toString v}".home;
+      }) {
+        "8"      = 8;
+        "11"     = 11;
+        "lts"    = 11;
+        "17"     = 17;
+        "newest" = 17;
       };
     };
     extensions = [
