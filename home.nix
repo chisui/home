@@ -38,7 +38,7 @@ in {
     ./home/firefox.nix
     ./home/terminator.nix
     ./home/chromium.nix
-    ./home/vscodium.nix
+    ./home/vscodium
     ./home/direnv.nix
     ./home/browserpass.nix
   ];

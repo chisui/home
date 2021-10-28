@@ -1,0 +1,7 @@
+{ pkgs, ... }:
+{
+  # manage rust through mozilla nix overlay by default instead of rustup
+  "rust-client.disableRustup" = true;
+  # use project specific rust-analyzer
+  "rust-analyzer.server.path" = "rust-analyzer";
+}
