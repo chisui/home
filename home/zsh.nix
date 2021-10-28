@@ -37,6 +37,9 @@ in {
       plugins = [ "git" ];
       theme = "agnoster-nix";
       custom = "${customDir}";
+      extraConfig = ''
+        export PATH=$PATH:/${/home/chisui/projects/scripts};
+      '';
     };
   };
 }
