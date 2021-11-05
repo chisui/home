@@ -39,6 +39,7 @@ in {
     ./home/gopass.nix
     ./home/i3.nix
     ./home/intellij.nix
+    ./home/less.nix
     ./home/terminator.nix
     ./home/vscodium
     ./home/zsh.nix
