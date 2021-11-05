@@ -3,11 +3,12 @@ with pkgs.lib;
 let
   packages = map (p: pkgs."${p}")
     (filter (x: x != "")
-    (splitString "\n" (readFile ./packages.lst)));
-in {
+      (splitString "\n" (readFile ./packages.lst)));
+in
+{
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
+
   home = rec {
     username = "chisui";
     homeDirectory = "/home/${username}";
@@ -16,7 +17,7 @@ in {
     };
     inherit packages;
   };
-  
+
   gtk = {
     enable = true;
   };

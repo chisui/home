@@ -4,7 +4,8 @@ let
     name = "JavaSE-${name}";
     path = pkgs."jdk${builtins.toString version}".home;
   };
-in {
+in
+{
   extensions = [
     pkgs.vscode-extensions.redhat.java
   ];

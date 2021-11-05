@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   programs.chromium = {
     enable = true;
@@ -10,6 +9,7 @@
         browserpass
         react-devtools
         redux-devtools
-      ]);
+      ]
+    );
   };
 }

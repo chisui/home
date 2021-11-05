@@ -1,12 +1,14 @@
 { pkgs, ... }@args:
 let
-  importConfig = path: { settings ? {}, extensions ? [] }: let
+  importConfig = path: { settings ? { }, extensions ? [ ] }:
+    let
       cfg = import path args;
-    in {
-      settings = settings // (if cfg?settings then cfg.settings else {});
-      extensions = extensions ++ (if cfg?extensions then cfg.extensions else []);
+    in
+    {
+      settings = settings // (if cfg?settings then cfg.settings else { });
+      extensions = extensions ++ (if cfg?extensions then cfg.extensions else [ ]);
     };
-  imported = pkgs.lib.foldr importConfig {} [
+  imported = pkgs.lib.foldr importConfig { } [
     ./rust.nix
     ./java.nix
     ./pegjs.nix
@@ -14,7 +16,8 @@ let
     ./console.nix
     ./haskell.nix
   ];
-in {
+in
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;

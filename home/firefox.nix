@@ -15,6 +15,7 @@
         browserpass
         react-devtools
         redux-devtools
-      ]);
+      ]
+    );
   };
 }

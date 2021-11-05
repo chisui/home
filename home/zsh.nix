@@ -22,7 +22,8 @@ let
       sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
     };
   };
-in {
+in
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
