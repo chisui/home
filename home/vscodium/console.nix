@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
   console-theme = import ../solarized-dark.nix;
 in {

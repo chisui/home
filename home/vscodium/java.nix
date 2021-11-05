@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  jdk = n: v: {
+  jdk = { version, name ? builtins.toString version, ... }: {
     name = "JavaSE-${n}";
     path = pkgs."jdk${builtins.toString v}".home;
   };
@@ -10,9 +10,12 @@ in {
   ];
   settings = {
     "java.configuration.runtimes" = [
-      (jdk "1.8"    8)
-      (jdk "11"     11 // { default = true; })
-      (jdk "17"     17)
+      (jdk { version = 8; name = "1.8"; })
+      (jdk { version = 11; default = true; })
+      (jdk { version = 14; })
+      (jdk { version = 15; })
+      (jdk { version = 16; })
+      (jdk { version = 17; })
     ];
   };
 }
