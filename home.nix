@@ -31,16 +31,17 @@ in {
   };
 
   imports = [
-    ./home/zsh.nix
+    ./home/browserpass.nix
+    ./home/chromium.nix
+    ./home/direnv.nix
+    ./home/firefox.nix
     ./home/git.nix
+    ./home/gopass.nix
     ./home/i3.nix
     ./home/intellij.nix
-    ./home/firefox.nix
     ./home/terminator.nix
-    ./home/chromium.nix
     ./home/vscodium
-    ./home/direnv.nix
-    ./home/browserpass.nix
+    ./home/zsh.nix
   ];
 
   home.stateVersion = "21.03"; # DON'T CHANGE

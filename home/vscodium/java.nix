@@ -1,8 +1,8 @@
 { pkgs, ... }:
 let
   jdk = { version, name ? builtins.toString version, ... }: {
-    name = "JavaSE-${n}";
-    path = pkgs."jdk${builtins.toString v}".home;
+    name = "JavaSE-${name}";
+    path = pkgs."jdk${builtins.toString version}".home;
   };
 in {
   extensions = [
@@ -12,9 +12,9 @@ in {
     "java.configuration.runtimes" = [
       (jdk { version = 8; name = "1.8"; })
       (jdk { version = 11; default = true; })
-      (jdk { version = 14; })
-      (jdk { version = 15; })
-      (jdk { version = 16; })
+      # (jdk { version = 14; })
+      # (jdk { version = 15; })
+      # (jdk { version = 16; })
       (jdk { version = 17; })
     ];
   };

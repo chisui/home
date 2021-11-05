@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
   extensions = [
-    pkgs.vscode-extensions.matklad.rust-analyzer
+    # currently broken?
+    # pkgs.vscode-extensions.matklad.rust-analyzer
   ];
   settings = {
     # manage rust through mozilla nix overlay by default instead of rustup
