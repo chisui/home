@@ -12,35 +12,23 @@ let
       cp ${agnoster-nix-theme} $out/themes/agnoster-nix.zsh-theme  
     '';
   };
-  zsh-nix-shell = {
-    name = "zsh-nix-shell";
-    file = "nix-shell.plugin.zsh";
-    src = pkgs.fetchFromGitHub {
-      owner = "chisui";
-      repo = "zsh-nix-shell";
-      rev = "v0.4.0";
-      sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
-    };
-  };
 in
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    plugins = [
+    plugins = with pkgs.nur.repos.chisui.zsh-plugins; [
       zsh-nix-shell
     ];
     shellAliases = {
       code = "codium";
+      pass = "gopass";
     };
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
       theme = "agnoster-nix";
       custom = "${customDir}";
-      extraConfig = ''
-        export PATH=$PATH:/${/home/chisui/projects/scripts};
-      '';
     };
   };
 }
